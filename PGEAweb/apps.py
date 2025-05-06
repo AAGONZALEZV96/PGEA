@@ -4,3 +4,6 @@ from django.apps import AppConfig
 class PgeawebConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'PGEAweb'
+
+def ready(self):
+        import PGEAweb.signals

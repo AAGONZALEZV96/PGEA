@@ -1,15 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
-class Usuario(AbstractBaseUser):
+class Usuario(AbstractUser):
     ROLES =(
         ('ADMIN', 'Administrador'),
         ('MAEST', 'Maestra'),
         ('ALUM', 'Alumno'),
     )
     role = models.CharField(max_length=5, choices=ROLES)
+    username = models.CharField(max_length=100, unique = True, blank=True)
 
     def __str__(self):
         return f"{self.username} ({self.get_role_display()})"
